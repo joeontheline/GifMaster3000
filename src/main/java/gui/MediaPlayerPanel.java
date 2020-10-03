@@ -30,7 +30,7 @@ public class MediaPlayerPanel extends JPanel {
 	private PopMenu popMenu = null;
 	private boolean isPopMenuOpen = false;
 
-	MediaPlayerPanel(SeekBar sb) {
+	MediaPlayerPanel() {
 		this.popMenu = new PopMenu();
 		this.setLayout(new BorderLayout());
 		// mediaPlayerPane.setLayout();
@@ -92,7 +92,8 @@ public class MediaPlayerPanel extends JPanel {
 
 			@Override
 			public void positionChanged(MediaPlayer mediaPlayer, float newPosition) {
-				sb.setValue(Math.round(newPosition * 100));
+//				sb.setValue(Math.round(newPosition * 100));
+				MainFrameBus.post(new MainframeEvent(MainframeEvent.EventType.SEEKBARPOSITION, Math.round(newPosition * 100)));
 //				mediaPlayerComponent.showMarquee(ConCalcs.millisToHMS(mediaPlayerComponent.mediaPlayer().status().time()));
 //				Ebus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, ConCalcs.millisToHMS(mediaPlayerComponent.mediaPlayer().status().time()) ));
 			}

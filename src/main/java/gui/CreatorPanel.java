@@ -32,7 +32,7 @@ public class CreatorPanel extends JPanel {
 
 	CreatorPanel() {
 		this.controlsPanel = new ControlsPanel();
-		this.mediaPlayerPanel = new MediaPlayerPanel(controlsPanel.getSeekBar());
+		this.mediaPlayerPanel = new MediaPlayerPanel();
 
 		this.setLayout(new BorderLayout());
 		this.add(mediaPlayerPanel, BorderLayout.CENTER);

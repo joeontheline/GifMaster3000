@@ -17,6 +17,7 @@ public class MainFrameEventsListener {
 		switch (event.getType()) {
 			case "REPAINT" :
 				mainframe.repaint();
+				System.out.println("repainted");
 				break;
 			default :
 				break;

@@ -17,10 +17,8 @@ public class ControlsPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = -8116385714448999990L;
 	private static final Dimension playerButtonDims = new Dimension(70, 30);
-	private SeekBar seekBar = null;
 	
 	ControlsPanel(){
-		this.seekBar = new SeekBar();
 		try {
 			addToControlsPanel(new VideoSelectorButton());
 			addToControlsPanel(new PlayPauseButton());
@@ -35,7 +33,7 @@ public class ControlsPanel extends JPanel {
 		addToControlsPanel(new SlowerButton());
 		addToControlsPanel(new FasterButton());
 		addToControlsPanel(new StopButton());
-		addToControlsPanel(seekBar);
+		addToControlsPanel(new SeekBar());
 		
 		BoxLayout controlsLayout = new BoxLayout(this, BoxLayout.X_AXIS);
 		this.setLayout(controlsLayout);
@@ -46,10 +44,6 @@ public class ControlsPanel extends JPanel {
 	private void addToControlsPanel(Component com) {
 		this.add(com);
 		this.add(Box.createHorizontalStrut((2)));
-	}
-	
-	public SeekBar getSeekBar() {
-		return this.seekBar;
 	}
 	
 	public static JComponent applyPlayerButtonSettings(JComponent jc) {

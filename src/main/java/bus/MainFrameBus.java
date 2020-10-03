@@ -13,7 +13,7 @@ public class MainFrameBus {
 		eventBus.post(event);
 	}
 
-	public static void register(MainFrameEventsListener mel) {
+	public static void register(Object mel) {
 		if (eventBus == null)
 			eventBus = new EventBus("MainFrameBus");
 		eventBus.register(mel);

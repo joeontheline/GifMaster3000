@@ -13,7 +13,7 @@ public class MediaPlayerBus {
 		eventBus.post(event);
 	}
 
-	public static void register(MediaPlayerEventsListener mcel) {
+	public static void register(Object mcel) {
 		if (eventBus == null)
 			eventBus = new EventBus("MediaPlayerBus");
 		eventBus.register(mcel);
