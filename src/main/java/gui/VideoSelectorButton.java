@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import logic.Ebus;
+import bus.MediaPlayerBus;
 import mediaPlayer.MediaPlayerEvent;
 
 public class VideoSelectorButton extends JButton {
@@ -47,7 +47,7 @@ public class VideoSelectorButton extends JButton {
 				File inputFile = new File(dialog.getDirectory() + dialog.getFile());
 				if (inputFile.isFile()) {
 					// creatorPanel.openVideo(inputFile);
-					Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.FILESELECTION, inputFile));
+					MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.FILESELECTION, inputFile));
 
 					// Alert.consoleLog("MediaInfo \"" +
 					// ExportParameters.getInputFilePath() + "\"");

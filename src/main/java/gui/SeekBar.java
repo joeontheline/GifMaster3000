@@ -7,7 +7,7 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JSlider;
 
-import logic.Ebus;
+import bus.MediaPlayerBus;
 import mediaPlayer.MediaPlayerEvent;
 
 public class SeekBar extends JSlider{
@@ -24,7 +24,7 @@ public class SeekBar extends JSlider{
 			
 			public void mouseDragged(MouseEvent e) {
 				if (thiss.getValue() / 100 < 1) {
-					Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.SETPOSITION, (float) thiss.getValue() / 100));
+					MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.SETPOSITION, (float) thiss.getValue() / 100));
 				}
 			}
 		});

@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import logic.Ebus;
+import bus.MediaPlayerBus;
 import mediaPlayer.MediaPlayerEvent;
 
 public class SkipBackButton extends JButton{
@@ -33,7 +33,7 @@ public class SkipBackButton extends JButton{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// send message to skip forward
-				Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.SKIPBACK));
+				MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.SKIPBACK));
 			}
 		});
 		

@@ -8,8 +8,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import bus.MainFrameBus;
+import bus.MediaPlayerBus;
 import logic.ConCalcs;
-import logic.Ebus;
 import mediaPlayer.MediaPlayerComponent;
 import mediaPlayer.MediaPlayerEvent;
 import uk.co.caprica.vlcj.media.MediaRef;
@@ -241,13 +242,13 @@ public class MediaPlayerPanel extends JPanel {
 					popMenu.setMouseEvent(e);
 					popMenu.show(mediaPlayerComponent.videoSurfaceComponent(), e.getPoint().x, e.getPoint().y);
 					isPopMenuOpen = popMenu.isVisible();
-					Ebus.post(new MainframeEvent(MainframeEvent.EventType.REPAINT));
+					MainFrameBus.post(new MainframeEvent(MainframeEvent.EventType.REPAINT));
 				} else if (SwingUtilities.isLeftMouseButton(e) && isPopMenuOpen ) {
-					Ebus.post(new MainframeEvent(MainframeEvent.EventType.REPAINT));
+					MainFrameBus.post(new MainframeEvent(MainframeEvent.EventType.REPAINT));
 					isPopMenuOpen = popMenu.isVisible();
 					System.out.println("closing pm");
 				} else if (SwingUtilities.isLeftMouseButton(e)) {
-					Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.PLAYPAUSE));
+					MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.PLAYPAUSE));
 					isPopMenuOpen = popMenu.isVisible();
 				}
 			}

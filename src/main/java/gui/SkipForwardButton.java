@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import logic.Ebus;
+import bus.MediaPlayerBus;
 import mediaPlayer.MediaPlayerEvent;
 
 public class SkipForwardButton extends JButton {
@@ -32,7 +32,7 @@ public class SkipForwardButton extends JButton {
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.SKIPFORWARD));
+				MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.SKIPFORWARD));
 			}
 		});
 		

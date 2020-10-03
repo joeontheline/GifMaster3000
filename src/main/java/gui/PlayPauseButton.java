@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 
-import logic.Ebus;
+import bus.MediaPlayerBus;
 import mediaPlayer.MediaPlayerEvent;
 
 public class PlayPauseButton extends JToggleButton{
@@ -34,7 +34,7 @@ public class PlayPauseButton extends JToggleButton{
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.PLAYPAUSE));
+				MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.PLAYPAUSE));
 			}
 		});
 

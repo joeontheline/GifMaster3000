@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import logic.Ebus;
+import bus.MediaPlayerBus;
 import mediaPlayer.MediaPlayerEvent;
 
 public class StopButton extends JButton{
@@ -29,7 +29,7 @@ public class StopButton extends JButton{
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.STOP));
+				MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.STOP));
 //				File f = ExportParameters.getInputFile();
 //				mpc.mediaPlayer().controls().stop();
 ////				mpc.release();

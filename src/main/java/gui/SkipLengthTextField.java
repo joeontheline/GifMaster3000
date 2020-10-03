@@ -4,7 +4,8 @@ import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JTextField;
-import logic.Ebus;
+
+import bus.MediaPlayerBus;
 import mediaPlayer.MediaPlayerEvent;
 
 public class SkipLengthTextField extends JTextField {
@@ -28,7 +29,7 @@ public class SkipLengthTextField extends JTextField {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.SKIPLENGTHCHANGE,
+				MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.SKIPLENGTHCHANGE,
 						Integer.valueOf(dis.getText())));
 			}
 

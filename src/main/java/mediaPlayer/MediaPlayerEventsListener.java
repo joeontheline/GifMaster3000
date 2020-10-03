@@ -4,8 +4,8 @@ import java.awt.Color;
 
 import com.google.common.eventbus.Subscribe;
 
+import bus.MediaPlayerBus;
 import logic.ConCalcs;
-import logic.Ebus;
 import uk.co.caprica.vlcj.player.base.Marquee;
 import uk.co.caprica.vlcj.player.base.MarqueePosition;
 
@@ -17,7 +17,7 @@ public class MediaPlayerEventsListener {
 
 	MediaPlayerEventsListener(MediaPlayerComponent mpc) {
 		this.mediaPlayerComponent = mpc;
-		Ebus.register(this);
+		MediaPlayerBus.register(this);
 	}
 
 	@Subscribe
@@ -46,12 +46,12 @@ public class MediaPlayerEventsListener {
 			case "SKIPBACK" :
 //				System.out.println("MediaControlsEvent \tType:" + event.getType());
 				mediaPlayerComponent.mediaPlayer().controls().skipTime(-(this.skipLength));
-				Ebus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, ConCalcs.millisToHMS(mediaPlayerComponent.mediaPlayer().status().time())) );
+				MediaPlayerBus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, ConCalcs.millisToHMS(mediaPlayerComponent.mediaPlayer().status().time())) );
 				break;
 			case "SKIPFORWARD" :
 //				System.out.println("MediaControlsEvent \tType:" + event.getType());
 				mediaPlayerComponent.mediaPlayer().controls().skipTime(this.skipLength);
-				Ebus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, ConCalcs.millisToHMS(mediaPlayerComponent.mediaPlayer().status().time())) );
+				MediaPlayerBus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, ConCalcs.millisToHMS(mediaPlayerComponent.mediaPlayer().status().time())) );
 				break;
 			case "MUTE" :
 //				System.out.println("MediaControlsEvent \tType:" + event.getType());
@@ -62,14 +62,14 @@ public class MediaPlayerEventsListener {
 //				set the playback rate with the Float.sum() of the current rate +/- change value
 				mediaPlayerComponent.mediaPlayer().controls().setRate(Float.sum(mediaPlayerComponent.mediaPlayer().status().rate(), -0.2f));
 //				mediaPlayerComponent.showMarquee(String.valueOf(mediaPlayerComponent.mediaPlayer().status().rate()));
-				Ebus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, String.valueOf(mediaPlayerComponent.mediaPlayer().status().rate())) );
+				MediaPlayerBus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, String.valueOf(mediaPlayerComponent.mediaPlayer().status().rate())) );
 				break;
 			case "FASTER" :
 //				System.out.println("MediaControlsEvent \tType:" + event.getType());
 //				set the playback rate with the Float.sum() of the current rate +/- change value
 				mediaPlayerComponent.mediaPlayer().controls().setRate(Float.sum(mediaPlayerComponent.mediaPlayer().status().rate(), 0.2f));
 //				mediaPlayerComponent.showMarquee(String.valueOf(mediaPlayerComponent.mediaPlayer().status().rate()));
-				Ebus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, String.valueOf(mediaPlayerComponent.mediaPlayer().status().rate())) );
+				MediaPlayerBus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, String.valueOf(mediaPlayerComponent.mediaPlayer().status().rate())) );
 				break;
 			case "STOP" :
 //				System.out.println("MediaControlsEvent \tType:" + event.getType());
@@ -78,7 +78,7 @@ public class MediaPlayerEventsListener {
 			case "SETPOSITION" :
 //				System.out.println("MediaControlsEvent \tType:" + event.getType());
 				mediaPlayerComponent.mediaPlayer().controls().setPosition(event.getSeekBarPosition());
-				Ebus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, ConCalcs.millisToHMS(mediaPlayerComponent.mediaPlayer().status().time())) );
+				MediaPlayerBus.post(new MediaPlayerEvent( MediaPlayerEvent.EventType.SHOWMARQUEE, ConCalcs.millisToHMS(mediaPlayerComponent.mediaPlayer().status().time())) );
 				break;
 			case "SHOWMARQUEE" :
 //				System.out.println("MediaControlsEvent \tType:" + event.getType());

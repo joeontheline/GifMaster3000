@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import logic.Ebus;
+import bus.MediaPlayerBus;
 import mediaPlayer.MediaPlayerEvent;
 
 public class FasterButton extends JButton{
@@ -29,7 +29,7 @@ public class FasterButton extends JButton{
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Ebus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.FASTER));
+				MediaPlayerBus.post(new MediaPlayerEvent(MediaPlayerEvent.EventType.FASTER));
 			}
 		});
 		

@@ -2,13 +2,13 @@ package gui;
 
 import com.google.common.eventbus.Subscribe;
 
-import logic.Ebus;
+import bus.MainFrameBus;
 
 public class MainFrameEventsListener {
 	private Mainframe mainframe = null;
 	MainFrameEventsListener(Mainframe mf) {
 		this.mainframe = mf;
-		Ebus.register(this);
+		MainFrameBus.register(this);
 	}
 
 	@Subscribe
