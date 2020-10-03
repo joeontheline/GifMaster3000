@@ -24,8 +24,8 @@ public class PlayPauseButton extends JToggleButton{
 		try {
 			playImg = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResource("play.png")));
 			pauseImg = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResource("pause.png")));
-			this.setIcon(playImg);
-			this.setSelectedIcon(pauseImg);
+			this.setIcon(pauseImg);
+			this.setSelectedIcon(playImg);
 		} catch (IllegalArgumentException e1) {
 			e1.printStackTrace();
 			this.setText("PP");
